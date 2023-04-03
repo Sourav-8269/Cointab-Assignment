@@ -16,6 +16,11 @@ app.get("/",(req,res)=>{
     res.send("Welcome To App");
 })
 
+let date=new Date();
+let min=date.getMinutes();
+let hrs=date.getHours();
+console.log(min,hrs)
+
 app.use("/users",userRouter);
 
 app.listen(process.env.port,async ()=>{
