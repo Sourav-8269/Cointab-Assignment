@@ -26,9 +26,20 @@ import { useNavigate } from 'react-router-dom';
 
     const handleSubmit=()=>{
         console.log(email,password)
-        axios.post(`http://localhost:8080/users/login`,{email,password})
+        axios.post(`https://gorgeous-cyan-rattlesnake.cyclic.app/users/login`,{email,password})
         .then((res)=>{
             console.log(res)
+            console.log(res.data.msg=="Wrong Credentials")
+          // const data=re.data.
+          if(res.data.msg=="Wrong Credentials"){
+            toast({
+              title: res.data.msg,
+              status: "success",
+              duration: 2000,
+              isClosable: true,
+              position:"top"
+            });
+          }else{
             toast({
                 title: "Login Success",
                 status: "success",
@@ -36,9 +47,9 @@ import { useNavigate } from 'react-router-dom';
                 isClosable: true,
                 position:"top"
               });
-              console.log(res.data)
               localStorage.setItem("user-data",JSON.stringify(res.data))
               navigate("/home")
+          }
           })
           .catch((err)=>{
             toast({

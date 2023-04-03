@@ -28,7 +28,7 @@ const Register=()=>{
 
     const handleSubmit=()=>{
         console.log(email,password)
-        axios.post(`http://localhost:8080/users/register`,{email,password})
+        axios.post(`https://gorgeous-cyan-rattlesnake.cyclic.app/users/register`,{email,password})
         .then((res)=>{
             console.log(res)
             toast({
